@@ -1,6 +1,7 @@
 // It is a modal so first name should be capital
 // This is for the notes to be entered by the user
 const mongoose = require("mongoose");
+const { Schema } = mongoose;
 
 const NotesSchema = new mongoose.Schema({
   title: {
@@ -16,7 +17,7 @@ const NotesSchema = new mongoose.Schema({
     required: true,
   },
   date: {
-    type: date,
+    type: Date,
     default: Date.now,
   },
 });
