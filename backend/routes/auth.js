@@ -138,6 +138,7 @@ router.post("/getuser", fetchuser, async (req, res) => {
     // We need a middleware which can decode the user for us so that we do not need to copy paste same piece of code everywhere and we can directly use our middleware inside the function where we need to decode the user
     // Middleware is just a function which works in the time between a request is made and a response is sent
     // Middleware takes a Request, response and next where next is the function which will run after the middleware has finished executing.
+    // We will send auth-token in req.Header through Middleware and get the user id and get the user through it.
     const user = await User.findById(userId).select("-password");
     res.send(user);
   } catch (error) {
