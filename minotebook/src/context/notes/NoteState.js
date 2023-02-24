@@ -99,7 +99,7 @@ const NoteState = (props) => {
       user: "63f709a27b8d3e607eb21272",
       title: title,
       description: description,
-      tag: "Web development",
+      tag: tag,
       date: "2023-02-23T07:58:41.818Z",
       __v: 0,
     };
@@ -107,10 +107,18 @@ const NoteState = (props) => {
   };
 
   // Delete a note
-  const deletenote = (id) => {};
+  const deletenote = (id) => {
+    console.log(`Deleting the note with ${id}`);
+    const newNotes = notes.filter((note) => {
+      return note._id !== id;
+    });
+    setNotes(newNotes);
+  };
 
   // Edit a note
-  const editnote = (id) => {};
+  const editnote = (id, title, description, tag) => {
+    console.log("Edot button has been clicked");
+  };
   return (
     <NoteContext.Provider value={{ notes, addnote, editnote, deletenote }}>
       {props.children}
