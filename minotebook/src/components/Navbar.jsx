@@ -1,12 +1,43 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 const Navbar = () => {
+  // we are using useLocation hook to get the location of active link so that we can change the active setting in the navbar
+  // we will use location.pathname
+  let location = useLocation();
+  useEffect(() => {
+    console.log(location.pathname);
+  }, [location]);
+
+  // For dark mode of Navbar
+  const [mode, setmode] = useState(false);
+  const modeSet = () => {
+    console.log("modeset button clicked");
+    setmode(!mode);
+  };
+
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav
+        className="navbar navbar-expand-lg"
+        style={{
+          background: mode ? "black" : "white",
+          color: mode ? "white" : "black",
+        }}
+      >
         <Link className="navbar-brand" to="/">
-          Navbar
+          <span
+            style={{
+              fontWeight: "bold",
+              color: "#FF800C",
+              fontFamily: "cursive",
+            }}
+          >
+            miNotebook
+          </span>
         </Link>
         <button
           className="navbar-toggler"
@@ -23,14 +54,43 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
-              <Link className="nav-link" to="/">
-                Home <span className="sr-only">(current)</span>
+              <Link
+                className="nav-link"
+                to="/"
+                style={{
+                  textDecoration: "none",
+                  color: location.pathname === "/" ? "#ff800c" : "gray",
+                  fontWeight: location.pathname === "/" ? "bold" : "inherit",
+                }}
+              >
+                Home
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/about">
+              <Link
+                className="nav-link"
+                to="/about"
+                style={{
+                  textDecoration: "none",
+                  color: location.pathname === "/about" ? "#ff800c" : "gray",
+                  fontWeight:
+                    location.pathname === "/about" ? "bold" : "inherit",
+                }}
+              >
                 About
               </Link>
+            </li>
+            <li className="nav-item">
+              <h6
+                onClick={modeSet}
+                style={{
+                  margin: "10px",
+                  cursor: "pointer",
+                }}
+              >
+                {" "}
+                {mode ? "Light Mode" : "Dark Mode"}
+              </h6>
             </li>
           </ul>
           <form className="form-inline my-2 my-lg-0">
