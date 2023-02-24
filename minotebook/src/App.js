@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import About from "./components/About";
 import NoteState from "./context/notes/NoteState";
+import Alert from "./components/Alert";
 
 // Wrap everything inside NoteState context so that we can access the state from wherever in our app
 
@@ -13,6 +14,7 @@ function App() {
       <NoteState>
         <Router>
           <Navbar />
+          <Alert message="This is a message" />
           <div className="container">
             <Routes>
               <Route exact path="/" element={<Home />} />
