@@ -18,10 +18,20 @@ const Notesitem = (props) => {
         }}
       >
         <div className="card-body">
-          <h5 className="card-title" style={{ fontWeight: "bolder" }}>
+          <h5
+            className="card-title"
+            style={{ fontWeight: "bolder", textOverflow: "ellipsis" }}
+          >
             {note.title}
           </h5>
-          <p className="card-text" style={{ fontWeight: "bold" }}>
+          <p
+            className="card-text"
+            style={{
+              fontWeight: "bold",
+              textOverflow: "ellipsis",
+              overflow: "hidden",
+            }}
+          >
             {note.description}
           </p>
           <p

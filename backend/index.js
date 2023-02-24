@@ -4,8 +4,10 @@ const connectToMongo = require("./db");
 connectToMongo();
 
 const PORT = 5000;
+var cors = require("cors");
 
 // Middleware to use req.body is required
+app.use(cors());
 app.use(express.json());
 
 // Available routes coming from routes folder
