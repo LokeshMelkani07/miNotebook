@@ -50,6 +50,7 @@ const Notesitem = (props) => {
             class="fa-solid fa-trash mx-2"
             onClick={() => {
               deletenote(note._id);
+              props.showAlert("Note Deleted Successfully!", "success");
             }}
             data-tooltip-id="my-tooltip"
             data-tooltip-content="Delete Note"

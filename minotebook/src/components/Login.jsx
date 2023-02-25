@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 // POST: http://localhost:5000/api/auth/login
 
-const Login = () => {
+const Login = (props) => {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
@@ -26,8 +26,9 @@ const Login = () => {
       localStorage.setItem("token", json.authToken);
       // redirect
       navigate("/");
+      props.showAlert("Logged In Successfully!", "success");
     } else {
-      alert("Invalid creds");
+      props.showAlert("Invalid Credentials", "danger");
     }
   };
   const onChange = (e) => {

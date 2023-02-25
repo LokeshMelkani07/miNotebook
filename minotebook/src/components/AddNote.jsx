@@ -4,7 +4,7 @@ import { useContext } from "react";
 import "react-tooltip/dist/react-tooltip.css";
 import { Tooltip } from "react-tooltip";
 
-const AddNote = () => {
+const AddNote = (props) => {
   const context = useContext(noteContext);
   const { addnote } = context;
   const [note, setNote] = useState({ title: "", description: "", tag: "" });
@@ -13,6 +13,7 @@ const AddNote = () => {
     e.preventDefault();
     addnote(note.title, note.description, note.tag);
     setNote({ title: "", description: "", tag: "" });
+    props.showAlert("Note Added Successfully!", "success");
   };
   // For input Fields
   const onchange = (e) => {
