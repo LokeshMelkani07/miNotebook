@@ -5,7 +5,7 @@ import Notesitem from "./Notesitem";
 
 const Notes = () => {
   const context = useContext(noteContext);
-  const { notes, addnote, getnote } = context;
+  const { notes, addnote, getnote, editnote } = context;
   useEffect(() => {
     getnote();
   }, []);
@@ -17,11 +17,18 @@ const Notes = () => {
   // We will set the state
   // Now we make a edit note in our context where we can make the API call and edit the note
   const ref = useRef(null);
-  const [note, setNote] = useState({ etitle: "", edescription: "", etag: "" });
+  const refClose = useRef(null);
+  const [note, setNote] = useState({
+    id: " ",
+    etitle: "",
+    edescription: "",
+    etag: "",
+  });
   const updateNote = (currentNote) => {
     console.log("Button is clicked");
     ref.current.click();
     setNote({
+      id: currentNote._id,
       etitle: currentNote.title,
       edescription: currentNote.description,
       etag: currentNote.tag,
@@ -37,6 +44,8 @@ const Notes = () => {
   const handleClick = (e) => {
     console.log("Updating the note ", note);
     e.preventDefault();
+    editnote(note.id, note.etitle, note.edescription, note.etag);
+    refClose.current.click();
   };
 
   return (
@@ -129,6 +138,7 @@ const Notes = () => {
                 type="button"
                 className="btn btn-secondary"
                 data-dismiss="modal"
+                ref={refClose}
               >
                 Close
               </button>
