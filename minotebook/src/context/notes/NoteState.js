@@ -36,17 +36,7 @@ const NoteState = (props) => {
           "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjNmNzA5YTI3YjhkM2U2MDdlYjIxMjcyIn0sImlhdCI6MTY3NzEzNTU0OH0.Bu5OFBtqIZ4j2EmULG_z9K8SPVcVt8iBdsaTKHitaF0",
       },
     });
-    const json = await response.json();
-    console.log("Adding a note");
-    const note = {
-      _id: "63f71cb1cb2fbd1ad7a59185",
-      user: "63f709a27b8d3e607eb21272",
-      title: title,
-      description: description,
-      tag: tag,
-      date: "2023-02-23T07:58:41.818Z",
-      __v: 0,
-    };
+    const note = await response.json();
     setNotes(notes.concat(note));
   };
 

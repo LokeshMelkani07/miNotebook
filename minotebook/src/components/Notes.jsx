@@ -99,6 +99,8 @@ const Notes = () => {
                     aria-describedby="emailHelp"
                     placeholder="Enter Title.."
                     onChange={onchange}
+                    minLength={5}
+                    required
                   />
                 </div>
                 <div className="form-group">
@@ -114,6 +116,8 @@ const Notes = () => {
                     aria-describedby="emailHelp"
                     placeholder="Enter the Description..."
                     onChange={onchange}
+                    minLength={5}
+                    required
                   />
                 </div>
                 <div className="form-group">
@@ -143,6 +147,9 @@ const Notes = () => {
                 Close
               </button>
               <button
+                disabled={
+                  note.etitle.length < 5 || note.edescription.length < 5
+                }
                 type="button"
                 className="btn btn-primary"
                 onClick={handleClick}
@@ -156,6 +163,12 @@ const Notes = () => {
 
       <h2 style={{ fontWeight: "bold", fontFamily: "fantasy" }}>Your Notes</h2>
       <div className="row my-3">
+        <div
+          className="container mx-2"
+          style={{ color: "red", fontFamily: "cursive" }}
+        >
+          {notes.length === 0 && "No Notes to Display"}
+        </div>
         {notes.map((note) => {
           return (
             <Notesitem key={note._id} updateNote={updateNote} note={note} />
