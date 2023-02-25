@@ -47,6 +47,7 @@ const Login = () => {
             name="email"
             value={credentials.email}
             onChange={onChange}
+            required
           />
         </div>
         <div className="mb-3">
@@ -60,10 +61,11 @@ const Login = () => {
             name="password"
             value={credentials.password}
             onChange={onChange}
+            required
           />
         </div>
         <button type="submit" className="btn btn-primary">
-          Submit
+          Login
         </button>
       </form>
     </div>
