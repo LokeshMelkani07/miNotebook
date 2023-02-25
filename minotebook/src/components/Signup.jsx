@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // POST: http://localhost:5000/api/auth/createUser
 
@@ -41,7 +42,11 @@ const Signup = (props) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
   return (
-    <div className="container">
+    <div className="container" style={{ marginBottom: "20px" }}>
+      <h3 style={{ fontWeight: "bold", marginBottom: "30px" }}>
+        Create an account to use{" "}
+        <span style={{ color: "#ff800c" }}>miNotebook</span>
+      </h3>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="name" className="form-label">
@@ -102,7 +107,19 @@ const Signup = (props) => {
             onChange={onChange}
           />
         </div>
-        <button type="submit" className="btn btn-primary">
+        <div style={{ marginBottom: "14px" }}>
+          <Link to="/login">Already have an account?</Link>
+        </div>
+        <button
+          type="submit"
+          className="btn btn-primary"
+          style={{
+            background: "#ff800c",
+            color: "black",
+            fontWeight: "bold",
+            border: "1px solid black",
+          }}
+        >
           Signup
         </button>
       </form>

@@ -2,12 +2,20 @@ import React, { useContext, useState, useEffect, useRef } from "react";
 import noteContext from "../context/notes/noteContext";
 import AddNote from "./AddNote";
 import Notesitem from "./Notesitem";
+import { useNavigate } from "react-router-dom";
 
 const Notes = (props) => {
   const context = useContext(noteContext);
+  const navigate = useNavigate();
   const { notes, addnote, getnote, editnote } = context;
   useEffect(() => {
-    getnote();
+    // If user is logged in, we store the auth token in the local storage and if local storage does not have auth-token means the user is not logged in
+    // To see the notes, the user need to have a logged in account so we redirect user to login page
+    if (localStorage.getItem("token")) {
+      getnote();
+    } else {
+      navigate("/login");
+    }
   }, []);
   // We are making a modal
   // When we click in the edit button a modal should open where we have the details of the note already filled

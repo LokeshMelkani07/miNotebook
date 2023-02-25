@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // POST: http://localhost:5000/api/auth/login
 
@@ -24,9 +25,10 @@ const Login = (props) => {
     if (json.success) {
       // Save the auth-token
       localStorage.setItem("token", json.authToken);
+      // Alert
+      props.showAlert("Logged In Successfully!", "success");
       // redirect
       navigate("/");
-      props.showAlert("Logged In Successfully!", "success");
     } else {
       props.showAlert("Invalid Credentials", "danger");
     }
@@ -36,6 +38,10 @@ const Login = (props) => {
   };
   return (
     <div className="container">
+      <h3 style={{ fontWeight: "bold", marginBottom: "30px" }}>
+        Login to continue to{" "}
+        <span style={{ color: "#ff800c" }}>miNotebook</span>
+      </h3>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="email" className="form-label">
@@ -65,7 +71,19 @@ const Login = (props) => {
             required
           />
         </div>
-        <button type="submit" className="btn btn-primary">
+        <div style={{ marginBottom: "14px" }}>
+          <Link to="/signup">Did Not have an account? Create an Account</Link>
+        </div>
+        <button
+          type="submit"
+          className="btn btn-primary"
+          style={{
+            background: "#ff800c",
+            color: "black",
+            fontWeight: "bold",
+            border: "1px solid black",
+          }}
+        >
           Login
         </button>
       </form>
