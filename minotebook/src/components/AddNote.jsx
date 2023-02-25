@@ -6,8 +6,8 @@ import { Tooltip } from "react-tooltip";
 
 const AddNote = () => {
   const context = useContext(noteContext);
-  const [note, setNote] = useState({ title: "", description: "", tag: "" });
   const { addnote } = context;
+  const [note, setNote] = useState({ title: "", description: "", tag: "" });
   // For Submit button
   const handleClick = (e) => {
     e.preventDefault();
@@ -27,7 +27,7 @@ const AddNote = () => {
           "rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em",
       }}
     >
-      <h2 style={{ fontWeight: "bold", fontFamily: "fantasy" }}>Add a note</h2>
+      <h2 style={{ fontWeight: "bold", fontFamily: "fantasy" }}>Add a Note</h2>
       <form className="my-3">
         <div className="form-group">
           <label HTMLfor="title" style={{ color: "#ff800c" }}>

@@ -7,7 +7,7 @@ import { Tooltip } from "react-tooltip";
 const Notesitem = (props) => {
   const context = useContext(noteContext);
   const { deletenote } = context;
-  const { note } = props;
+  const { note, updateNote } = props;
   return (
     <div className="col-md-3">
       <div
@@ -57,6 +57,9 @@ const Notesitem = (props) => {
           <Tooltip id="my-tooltip" />
           <i
             class="fa-solid fa-pen-to-square mx-2"
+            onClick={() => {
+              updateNote(note);
+            }}
             data-tooltip-id="my-tooltipp"
             data-tooltip-content="Edit Note"
           ></i>
