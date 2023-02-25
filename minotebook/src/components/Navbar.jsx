@@ -93,19 +93,35 @@ const Navbar = () => {
               </h6>
             </li>
           </ul>
-          <form className="form-inline my-2 my-lg-0">
-            <input
-              className="form-control mr-sm-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button
-              className="btn btn-outline-success my-2 my-sm-0"
-              type="submit"
+          <form className="d-flex my-2">
+            <Link
+              to="/login"
+              class="btn btn-primary"
+              style={{
+                background: "#ff800c",
+                color: "black",
+                fontWeight: "bold",
+                border: "1px solid black",
+              }}
+              role="button"
             >
-              Search
-            </button>
+              <span style={{ marginRight: "12px" }}>Login</span>
+              <i class="fa-solid fa-right-to-bracket"></i>
+            </Link>
+            <Link
+              to="/signup"
+              class="btn btn-primary mx-2"
+              role="button"
+              style={{
+                background: "#ff800c",
+                color: "black",
+                fontWeight: "bold",
+                border: "1px solid black",
+              }}
+            >
+              <span style={{ marginRight: "12px" }}>Signup</span>
+              <i class="fa-sharp fa-solid fa-user-plus"></i>
+            </Link>
           </form>
         </div>
       </nav>

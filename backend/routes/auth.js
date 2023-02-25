@@ -33,9 +33,13 @@ router.post(
     try {
       let user = await User.findOne({ email: req.body.email });
       if (user) {
+        success = false;
         return res
           .status(400)
-          .json({ error: "Sorry, User with same email already exits" });
+          .json({
+            success,
+            error: "Sorry, User with same email already exits",
+          });
       }
       // Generating the salt
       const salt = await bcrypt.genSalt(10);
@@ -58,7 +62,8 @@ router.post(
       };
       const authToken = jwt.sign(data, JWT_SECRET);
       // console.log(jwtData);
-      res.json({ authToken });
+      success = true;
+      res.json({ success, authToken });
     } catch (err) {
       // catch the error if there
       console.log(err.message);
@@ -105,9 +110,11 @@ router.post(
       const passwordCompare = await bcrypt.compare(password, user.password);
       if (!passwordCompare) {
         // If password does not match
-        return res
-          .status(400)
-          .json({ error: "Please Try to Login with correct Credentials" });
+        success = false;
+        return res.status(400).json({
+          success,
+          error: "Please Try to Login with correct Credentials",
+        });
       }
       const data = {
         user: {
@@ -115,7 +122,8 @@ router.post(
         },
       };
       const authToken = jwt.sign(data, JWT_SECRET);
-      res.json({ authToken });
+      success = true;
+      res.json({ success, authToken });
     } catch (error) {
       // catch the error if there
       console.log(error.message);
