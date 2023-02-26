@@ -5,7 +5,7 @@ import { useState } from "react";
 // This context is created to stop prop drilling
 
 const NoteState = (props) => {
-  const host = "http://localhost:5000";
+  const host = "https://minotebookmernbackend.onrender.com";
   const noteInitial = [];
   const [notes, setNotes] = useState(noteInitial);
 
