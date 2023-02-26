@@ -1,0 +1,13 @@
+.light-theme {
+  background-color: inherit;
+  color: inherit;
+}
+
+.dark-theme {
+  background-color: black;
+  color: white;
+}
+
+.card {
+  color: black;
+}

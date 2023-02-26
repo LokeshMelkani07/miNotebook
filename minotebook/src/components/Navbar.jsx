@@ -9,20 +9,22 @@ const Navbar = () => {
   // we will use location.pathname
   let location = useLocation();
   let navigate = useNavigate();
+  const [theme, setTheme] = useState("light-theme");
   const handleLogout = () => {
     localStorage.removeItem("token");
     navigate("/login");
   };
-  useEffect(() => {
-    console.log(location.pathname);
-  }, [location]);
 
   // For dark mode of Navbar
   const [mode, setmode] = useState(false);
   const modeSet = () => {
     console.log("modeset button clicked");
     setmode(!mode);
+    theme === "light-theme" ? setTheme("dark-theme") : setTheme("light-theme");
   };
+  useEffect(() => {
+    document.body.className = theme;
+  }, [theme]);
 
   return (
     <div>
